@@ -1,0 +1,109 @@
+﻿<Window
+    x:Class="Img2base_GUI.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Img2base_GUI"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+    <!--  使用Grid布局管理器来组织控件  -->
+    <Grid>
+        <!--  定义三列  -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <!--  第一列，自适应宽度  -->
+            <ColumnDefinition Width="Auto" />
+            <!--  第二列，自动宽度  -->
+            <ColumnDefinition Width="*" />
+            <!--  第三列，自适应宽度  -->
+        </Grid.ColumnDefinitions>
+
+        <!--  图片显示区域和按钮  -->
+        <StackPanel Grid.Column="0" Orientation="Vertical">
+            <!--  图片控件，设置固定大小为200x200  -->
+            <Image
+                x:Name="imageControl"
+                Width="200"
+                Height="200"
+                Margin="10"
+                Stretch="Uniform" />
+            <!--  浏览和保存按钮  -->
+            <StackPanel
+                Margin="10"
+                HorizontalAlignment="Center"
+                Orientation="Horizontal">
+                <Button
+                    Padding="5"
+                    Click="Button_Click"
+                    Content="浏览" />
+                <Button
+                    Margin="10,0,0,0"
+                    Padding="5"
+                    Click="Button_Click_1"
+                    Content="保存" />
+                <Button
+                    Padding="5"
+                    Click="Button_Click_6"
+                    Content="清空照片" />
+            </StackPanel>
+        </StackPanel>
+
+        <!--  转换按钮  -->
+        <Button
+            Grid.Column="1"
+            Width="60"
+            Padding="5"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Click="Button_Click_2"
+            Content="转换" />
+
+        <!--  进制选择和文本显示区域  -->
+        <StackPanel Grid.Column="2" Orientation="Vertical">
+            <RichTextBox
+                x:Name="richtextboxControl"
+                Width="200"
+                Height="200"
+                Margin="10"
+                AcceptsReturn="True"
+                IsReadOnly="True"
+                VerticalScrollBarVisibility="Auto" />
+
+            <!--  进制选择下拉框  -->
+            <ComboBox
+                x:Name="baseComboBox"
+                Margin="10"
+                SelectionChanged="baseComboBox_SelectionChanged">
+                <ComboBoxItem Content="二进制" />
+                <ComboBoxItem Content="八进制" />
+                <ComboBoxItem Content="十进制" />
+                <ComboBoxItem Content="十六进制" />
+                <!--  根据需要添加更多进制选项  -->
+            </ComboBox>
+            <!--  复制和保存为文本文件按钮  -->
+            <StackPanel
+                Margin="10"
+                HorizontalAlignment="Center"
+                Orientation="Horizontal">
+                <Button
+                    Padding="5"
+                    Click="Button_Click_3"
+                    Content="复制" />
+                <Button
+                    Margin="10,0,0,0"
+                    Padding="5"
+                    Click="Button_Click_4"
+                    Content="保存(TXT)" />
+                <Button
+                    Margin="10,0"
+                    Padding="5"
+                    Click="Button_Click_5"
+                    Content="加载TXT" />
+            </StackPanel>
+            <!--  富文本框，用于显示转换结果，设置为多行显示，大小为200x200  -->
+        </StackPanel>
+    </Grid>
+</Window>
